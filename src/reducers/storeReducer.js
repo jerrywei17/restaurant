@@ -4,7 +4,9 @@ export default function (state = {storeList: []}, action) {
   switch (action.type) {
     case ADD_STORE:
       const store = action.payload;
-      return { ...state, storeList: [...state.storeList, { ...store, id: uuid++ }] };
+      console.log(store)
+      let date = new Date()
+      return { ...state, storeList: [...state.storeList, { ...store, id: uuid++, createdAt: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` }] };
     case DELETE_STORE:
       const id = action.payload;
       let index = state.storeList.findIndex(s => s.id === id)

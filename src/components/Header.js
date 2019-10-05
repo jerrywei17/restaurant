@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+const Container = styled.nav`
+  background: #F5FAFF;
+  border: 1px solid #f1f1f1;
+`
+
 const Ul = styled.ul`
   list-style-type: none;
   display: flex;
@@ -12,8 +18,8 @@ const Li = styled.li`
 `
 
 const Header = () => (
-  <nav className="indigo">
-    <Ul className="right">
+  <Container>
+    <Ul>
       <Li>
         <Link to="/">Store List</Link>
       </Li>
@@ -21,7 +27,7 @@ const Header = () => (
         <Link to="/admin">Admin</Link>
       </Li>
     </Ul>
-  </nav>
+  </Container>
 )
 
 export default Header
