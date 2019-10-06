@@ -3,6 +3,7 @@ import * as actions from '../actions/storeActions'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import shopImg from '../assets/image/shop.svg'
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -72,7 +73,10 @@ const Item = ({ store, deleteStore }) => (
       <DefaultImage></DefaultImage>
     </div>
     <div className="content">
-      <div className="header">{store.displayName}</div>
+      <div className="header">
+        <Link style={{color: 'inherit'}} to={`/admin/${store.id}`}>{store.displayName}</Link>
+      </div>
+
       <div className="meta">
         <p>{store.description}</p>
       </div>
@@ -86,6 +90,7 @@ const Item = ({ store, deleteStore }) => (
         <div className="ui right floated tiny button" onClick={() => deleteStore(store.id)}>
           刪除
         </div>
+        <Link className="ui right floated tiny button" to={`/admin/${store.id}`}>詳情</Link>
       </div>
     </div>
   </div>
@@ -262,7 +267,7 @@ class Admin extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    storeList: state.store.storeList
+    storeList: state.stores
   }
 }
 export default connect(mapStateToProps, actions)(Admin);

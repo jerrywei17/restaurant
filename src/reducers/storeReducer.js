@@ -1,19 +1,18 @@
-import { ADD_STORE, DELETE_STORE } from '../actions/types';
-let uuid = 0
-export default function (state = {storeList: []}, action) {
+import { CREATE_STORE, DELETE_STORE } from '../actions/types';
+
+export default function (state = [], action) {
   switch (action.type) {
-    case ADD_STORE:
+    case CREATE_STORE:
       const store = action.payload;
-      console.log(store)
-      let date = new Date()
-      return { ...state, storeList: [...state.storeList, { ...store, id: uuid++, createdAt: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` }] };
+      return [ ...state, store];
     case DELETE_STORE:
       const id = action.payload;
-      let index = state.storeList.findIndex(s => s.id === id)
+      let index = state.findIndex(s => s.id === id)
+      let stores = [...state]
       if(index!==-1){
-        state.storeList.splice(index, 1)
+        stores.splice(index, 1)
       }
-      return { ...state, storeList: [...state.storeList]};
+      return stores;
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import StoreList from './StoreList';
 import Admin from './Admin';
 import AdminEdit from './AdminEdit';
 import StoreDetail from './StoreDetail';
-import StoreOrder from './StoreOrder';
+// import StoreOrder from './StoreOrder';
 
 class App extends Component {
   render() {
@@ -16,10 +16,10 @@ class App extends Component {
           <div>
             <Header />
             <Switch>
-              <Route path="/admin" component={Admin} />
               <Route path="/admin/:id" component={AdminEdit} />
+              <Route path="/admin" component={Admin} />
               <Route path="/store/:id" component={StoreDetail} />
-              <Route path="/store/:id/order" component={StoreOrder} />
+              {/* <Route path="/store/:id/order" component={StoreOrder} /> */}
               <Route path="/" component={StoreList} />
             </Switch>
           </div>

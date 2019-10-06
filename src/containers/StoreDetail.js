@@ -35,7 +35,7 @@ class StoreDetail extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    storeList: state.store.storeList
+    storeList: state.stores
   }
 }
 export default connect(mapStateToProps)(StoreDetail);
